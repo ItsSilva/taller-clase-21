@@ -44,31 +44,32 @@ const render = () => {
       
       const digimonList = (digimones) => {
         let digimonInTraining = [];
-        let digimonRookie = [];
         let digimonChampion = [];
+        let digimonRookie = [];
         
         for (digimon of digimones) {
           if (digimon.level === "In Training") {
             digimonInTraining.push(digimon);
-          } else if (digimon.level === "Rookie") {
-            digimonRookie.push(digimon);
-          } else if (digimon.level === "Champion") {
+          } 
+          else if (digimon.level === "Champion") {
             digimonChampion.push(digimon);
           }
-    
+          else if (digimon.level === "Rookie") {
+            digimonRookie.push(digimon);
+          } 
         }
     
         return {
             inTraining: digimonInTraining.length,
-            rookie: digimonRookie.length,
             champion: digimonChampion.length,
+            rookie: digimonRookie.length,
             };
         }
     
-        // const digimonReturn = digimonList(digimones);
-        // console.log(digimonReturn.inTraining);
-        // console.log(digimonReturn.rookie);
-        // console.log(digimonReturn.champion);
+        const digimonReturn = digimonList(digimones);
+        console.log(digimonReturn.inTraining);
+        console.log(digimonReturn.champion);
+        console.log(digimonReturn.rookie);
     
         console.log(digimonList(digimones));
     
@@ -76,16 +77,17 @@ const render = () => {
     
         const inTraining = document.createElement('p');
         inTraining.innerHTML = `Existen ${digimonList(digimones).inTraining} digimones con nivel In Training.`;
-    
-        const rookie = document.createElement('p');
-        rookie.innerHTML = `Existen ${digimonList(digimones).rookie} digimones con nivel Champion.`;
-    
+        
         const champion = document.createElement('p');
-        champion.innerHTML = `Existen ${digimonList(digimones).champion} digimones con nivel Rookie.`;
+        champion.innerHTML = `Existen ${digimonList(digimones).champion} digimones con nivel Champion.`;
+
+        const rookie = document.createElement('p');
+        rookie.innerHTML = `Existen ${digimonList(digimones).rookie} digimones con nivel Rookie.`;
+    
     
         container.appendChild(inTraining);
-        container.appendChild(rookie);
         container.appendChild(champion);
+        container.appendChild(rookie);
 };    
     document.addEventListener("DOMContentLoaded", render);
 
